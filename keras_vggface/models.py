@@ -44,7 +44,8 @@ def VGG16(include_top=True, weights='vggface',
     # Block 1
     x = Conv2D(64, (3, 3), activation='relu', padding='same', name='conv1_1')(
         img_input)
-    x = Conv2D(64, (3, 3), activation='relu', padding='same', name='conv1_2')(x)
+    x = Conv2D(64, (3, 3), activation='relu',
+               padding='same', name='conv1_2')(x)
     x = MaxPooling2D((2, 2), strides=(2, 2), name='pool1')(x)
 
     # Block 2
@@ -234,7 +235,8 @@ def RESNET50(include_top=True, weights='vggface',
     x = Activation('relu')(x)
     x = MaxPooling2D((3, 3), strides=(2, 2))(x)
 
-    x = resnet_conv_block(x, 3, [64, 64, 256], stage=2, block=1, strides=(1, 1))
+    x = resnet_conv_block(x, 3, [64, 64, 256],
+                          stage=2, block=1, strides=(1, 1))
     x = resnet_identity_block(x, 3, [64, 64, 256], stage=2, block=2)
     x = resnet_identity_block(x, 3, [64, 64, 256], stage=2, block=3)
 
